@@ -1,4 +1,4 @@
-package com.geeknight.products.productservice;
+package com.geeknight.products;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
