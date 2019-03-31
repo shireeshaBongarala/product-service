@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'com.avast.gradle.docker-compose' version '0.9.1'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
+test {
+    // Enable JUnit 5:
+    useJUnitPlatform()
+    outputs.upToDateWhen { false }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    def cucumberVersion = '2.3.1'
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion
+    testImplementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: cucumberVersion
+
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.11.0'
+    testImplementation group: 'io.github.openunirest', name: 'unirest-java', version: '2.5.01'
+
+    testImplementation group: 'ru.lanwen.wiremock', name: 'wiremock-junit5', version: '1.1.1'
+
+
+    def junitJupiterVersion = '5.3.2'
+
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitJupiterVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junitJupiterVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.4.1'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.23.4'
+
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitJupiterVersion
+
+
+}
+
+composeUp.dependsOn(':app:assemble')
+
+clean.dependsOn(composeDownForced)
+
+dockerCompose.isRequiredBy(test)
+
+dockerCompose {
+    useComposeFiles = ['./docker-compose.yml']
+    stopContainers = true
+}

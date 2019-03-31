@@ -9,7 +9,6 @@ import lombok.Data;
 
 
 @Data
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Product {
 
@@ -18,4 +17,7 @@ public class Product {
 
   @JsonProperty("name")
   private String name;
+
+  @JsonProperty("category_uuid")
+  private UUID  categoryUuid;
 }

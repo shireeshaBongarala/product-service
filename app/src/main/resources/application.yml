@@ -6,8 +6,21 @@ security:
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgresdb
+    url: jdbc:postgresql://${DATABASE_HOST:localhost:5432}/${DATABASE_NAME:postgresdb}
     username: postgres_user
     password: postgres_password
+  application:
+    name: products
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
 
-
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true

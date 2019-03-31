@@ -4,4 +4,5 @@ rootProject.name = 'product-service'
 enableFeaturePreview('IMPROVED_POM_SUPPORT')
 [
 		':app',
+		':bdd'
 ].each { include it }
