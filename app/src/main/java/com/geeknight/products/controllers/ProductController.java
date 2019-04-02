@@ -2,6 +2,7 @@ package com.geeknight.products.controllers;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -9,6 +10,7 @@ import com.geeknight.products.model.Product;
 import com.geeknight.products.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,5 +30,11 @@ public class ProductController {
     product = productService.createProduct(product);
 
     return ResponseEntity.created(locationUri).body(product);
+  }
+
+  @GetMapping("/{uuid}/recommendations")
+  public ResponseEntity<List<Product>> fetchRelevantProducts() throws URISyntaxException {
+
+    return null;
   }
 }

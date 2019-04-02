@@ -20,4 +20,10 @@ public class Product {
 
   @JsonProperty("category_uuid")
   private UUID  categoryUuid;
+
+  public Product(UUID uuid, String name, UUID categoryUuid) {
+    this.uuid = uuid;
+    this.name = name;
+    this.categoryUuid = categoryUuid;
+  }
 }
