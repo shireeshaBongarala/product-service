@@ -21,7 +21,7 @@ public class RecommendationsApiClient {
 
   private final RestTemplate restTemplate;
 
-  List<UUID> getRecommendationsForTheProduct(UUID productUuid) {
+ public List<UUID> getRecommendationsForTheProduct(UUID productUuid) {
     UriComponentsBuilder builder = UriComponentsBuilder
         .fromPath("/recommendations/{uuid}/")
         .queryParam("uuid", productUuid);

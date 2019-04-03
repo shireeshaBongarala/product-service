@@ -53,5 +53,6 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.4.1'
     testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.23.4'
     testImplementation group: 'au.com.dius', name: 'pact-jvm-consumer-junit5_2.12', version: '3.6.1'
+    testImplementation group: 'au.com.dius', name: 'pact-jvm-provider-junit5_2.12', version: '3.6.3'
     testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitJupiterVersion
 }

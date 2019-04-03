@@ -1,0 +1,46 @@
+{
+  "provider": {
+    "name": "products"
+  },
+  "consumer": {
+    "name": "frontend"
+  },
+  "interactions": [
+    {
+      "description": "a request for product",
+      "request": {
+        "method": "GET",
+        "path": "/v1/products/b1bdc023-17cf-4a61-9a15-ea669943c212",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "uuid": "b1bdc023-17cf-4a61-9a15-ea669943c212",
+          "name": "A merchant's guide to galaxy",
+          "category_uuid": "b1bdc023-17cf-4a61-9a15-ea669943c212"
+        },
+        "matchingRules": {
+          "$.header.Content-Type": {
+            "match": "regex",
+            "regex": "application/json(;\\s?charset=[\\w\\-]+)?"
+          }
+        }
+      },
+      "providerState": "the product with given uuid exists"
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.6.1"
+    }
+  }
+}

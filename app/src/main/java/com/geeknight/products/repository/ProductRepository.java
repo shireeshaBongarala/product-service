@@ -1,5 +1,8 @@
 package com.geeknight.products.repository;
 
+import java.util.List;
+import java.util.UUID;
+
 import javax.sql.DataSource;
 
 import com.geeknight.products.model.Product;
@@ -27,5 +30,9 @@ public class ProductRepository {
 
      jdbcInsert.execute(sqlParameterSource);
      return product;
+  }
+
+  public List<Product> findAll(List<UUID> productsUuids) {
+      return null;
   }
 }
